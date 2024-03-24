@@ -1,74 +1,84 @@
-\begin{figure}[ht!]
-     \caption*{6000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Bedna_od_bananu(1).png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Bedna_od_bananu.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Bily_vlk.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Cernobylsky_vagus.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Cernokneznik.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Doktor_Watson.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{6000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Dumpster_diver.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Fukusimska_posila.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Hra_nefer.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/John_McLane.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Levak.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Mapa_bananove_plantaze.png}
-        }
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
 
-\begin{figure}[ht!]
-     \caption*{6000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Mynarova_zabijacka.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Nateraci.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Pneumatika.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/SKWAT_tym.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Ukradena_vlajka.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/6000/Vagus_popelar.png}
-        }
-    \end{center}
-\end{figure}
+\extrafloats{1}
+
+\begin{document}
+\begin{landscape}
+
+\newcommand*{\samples}
+{
+Banadin,
+Bedna_od_bananu,
+Bedna_od_bananu_1,
+Bily_vlk,
+Cernobylsky_vagus,
+Cernokneznik,
+Doktor_Watson,
+Dumpster_diver,
+Fukusimska_posila,
+Hra_nefer,
+John_McLane,
+Levak,
+Mapa_bananove_plantaze,
+Mynarova_zabijacka,
+Nateraci,
+Nocni_mury_pana_Hudopa,
+Pneumatika,
+Postak_snu,
+Procitnuti,
+Sennes,
+SKWAT_tym,
+Ukradena_vlajka,
+Vagus_popelar,
+Ve_znameni_lva}
+
+\newcommand{\type}{6000}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}

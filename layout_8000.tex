@@ -1,76 +1,83 @@
-\begin{figure}[ht!]
-     \caption*{8000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Bojovy_zpev.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Davka_nehy.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Fat_Boy.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Jedlik_modrych_bananu.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Nudne_vysvetlovani.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Orloj_mrtvych.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{8000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Pestrobarevny_Kristus.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Pukavec.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Ruda_sila_Dobris.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Ruda_sila_z_Ostravy.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Spalovac_mrtvol.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Stinovy_valecnik.png}
-        }
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
 
-\begin{figure}[ht!]
-     \caption*{8000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Vagusatko.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Vinarna_U_Zvonecku.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Zkorumpovanej_polda.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Zobak.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Zuzivec.png}
-        }
-        \iffalse
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/8000/Zuzivec.png}
-        }
-        \fi
-    \end{center}
-\end{figure}
+\extrafloats{1}
+
+\begin{document}
+\begin{landscape}
+
+\newcommand*{\samples}
+{
+Bojovy_zpev,
+Carodej_snu,
+Davka_nehy,
+Fat_Boy,
+Jedlik_modrych_bananu,
+Nexus-6,
+Nudne_vysvetlovani,
+Orloj_mrtvych,
+Pestrobarevny_Kristus,
+Prohlizec,
+Pukavec,
+Ruda_sila_Dobris,
+Ruda_sila_z_Ostravy,
+Spalovac_mrtvol,
+Stinovy_valecnik,
+Tlachapoud,
+Tovarna_na_sny,
+Vagusatko,
+Ve_znameni_stira,
+Vinarna_U_Zvonecku,
+Zkorumpovanej_polda,
+Zobak,
+Zuzivec}
+
+\newcommand{\type}{8000}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}

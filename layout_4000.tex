@@ -1,101 +1,84 @@
-\begin{figure}[ht!]
-     \caption*{4000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Bananova_laborator.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Cerna_sila.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Ekvadorsky_farmar.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Hodnej_polda.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Horka_davka.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Javsky_farmar.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{4000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Jedlik_Vetrniku.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Magicka_formule.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Mapa_bananoveho_souostrovi.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Modra_sila.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Nadrz_plna_leklych_bananu.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Praci_prasek_Arijec.png}
-        }
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
 
-\begin{figure}[ht!]
-     \caption*{4000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Ruda_sila.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Spekbrasnak.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Stado_falesnych_prasat.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Stylar.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Taboriste.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Thajsky_farmar.png}
-        }
-    \end{center}
-\end{figure}
+\extrafloats{1}
 
-\begin{figure}[ht!]
-     \caption*{4000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Tradice_z_krabice.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Vetrna_elektrarna.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/Vlajka_Francie.png}
-        }\\
+\begin{document}
+\begin{landscape}
 
-        \iffalse        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/4000/.png}
-        }
-        \fi
-    \end{center}
-\end{figure}
+\newcommand*{\samples}
+{
+Bananova_laborator,
+Bila_kralovna,
+Cerna_sila,
+Drin_japonsky,
+Ekvadorsky_farmar,
+Hodnej_polda,
+Horka_davka,
+Javsky_farmar,
+Jedlik_Vetrniku,
+Magicka_formule,
+Mapa_bananoveho_souostrovi,
+Modra_sila,
+Nadrz_plna_leklych_bananu,
+Praci_prasek_Arijec,
+Ruda_sila,
+Skliba,
+Spekbrasnak,
+Stado_falesnych_prasat,
+Stylar,
+Taboriste,
+Thajsky_farmar,
+Tradice_z_krabice,
+Vetrna_elektrarna,
+Vlajka_Francie}
+
+\newcommand{\type}{4000}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}

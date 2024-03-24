@@ -1,49 +1,64 @@
-\begin{figure}[ht!]
-     \caption*{beginning}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Pes.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Tezka_pechota.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Veteran_z_Ypres.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Pes.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Tezka_pechota.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Veteran_z_Ypres.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{beginning}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/beginning/Sedy_bananovnik.png}
-        }
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
+
+\extrafloats{1}
+
+\begin{document}
+\begin{landscape}
+
+\newcommand*{\samples}
+{
+Pes,
+Sedy_bananovnik,
+Tezka_pechota,
+Veteran_z_Ypres}
+
+\newcommand{\type}{beginning}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 4
+\repeat
+
+\end{landscape}
+\end{document}

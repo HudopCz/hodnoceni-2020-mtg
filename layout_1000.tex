@@ -1,24 +1,66 @@
-\begin{figure}[ht!]
-     \caption*{1000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak_1_.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak_2_.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak_3_.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak_4_.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/1000/Hroznej_mastak_5_.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
+
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
+
+\extrafloats{1}
+
+\begin{document}
+\begin{landscape}
+
+\newcommand*{\samples}
+{
+Hroznej_mastak,
+Hroznej_mastak_1,
+Hroznej_mastak_2,
+Hroznej_mastak_3,
+Hroznej_mastak_4,
+Hroznej_mastak_5}
+
+\newcommand{\type}{1000}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}

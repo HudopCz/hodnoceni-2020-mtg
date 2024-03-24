@@ -1,50 +1,70 @@
-\begin{figure}[ht!]
-     \caption*{18000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Anna_Popelarka.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Albert_Fish.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Faffufnick.png}
-        }\\
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Glum.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Hulk.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Jeji_Pastorkyna.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{18000}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Pater_Monster.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/SS.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/TV.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/18000/Vrchni_hateman.png}
-        }
-        \iffalse
-        \subfigure{
-            \includegraphics[scale=0.75]{}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{}
-        }
-        \fi
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
+
+\extrafloats{1}
+
+\begin{document}
+\begin{landscape}
+
+\newcommand*{\samples}
+{
+Albert_Fish,
+Anna_Popelarka,
+Faffufnick,
+Glum,
+Jebtiska,
+Jeji_pastorkyna,
+Pater_Monster,
+SS,
+TV,
+Vrchni_hateman}
+
+\newcommand{\type}{18000}
+
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
+
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}

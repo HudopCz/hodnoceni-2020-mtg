@@ -1,129 +1,100 @@
-\begin{figure}[ht!]
-     \caption*{criminals}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Brad_Brodak.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Cervi.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Danielle_diSiuccare.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Dick_OMyPrick.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Don_Panzani.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Kmotr.png}
-        }
-    \end{center}
-\end{figure}
+\documentclass{article}
+\usepackage{subfigure}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage{pdfpages}
+\usepackage{pgffor}
 
-\begin{figure}[ht!]
-     \caption*{criminals}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Kromerizske_trvanlive_salamy.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Lobo.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Margherita_Mafian.png}
-        }\\
-        
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Najemny_vrah.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Narkobaron.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Narkozombie.png}
-        }
-    \end{center}
-\end{figure}
+\usepackage[pass]{geometry}
+\newgeometry{margin=0pt}
+\usepackage[font=tiny,skip=0pt]{caption}
 
-\begin{figure}[ht!]
-     \caption*{criminals}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Nicic_enchanmentu.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Prisera_s_takovejma_tesakama.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Profesor_Moriarty.png}
-        }\\
+\extrafloats{1}
 
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/PVS.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Sila_pozitivniho_vagusismu.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Skunk_pruhovany.png}
-        }
-    \end{center}
-\end{figure}
+\begin{document}
+\begin{landscape}
 
-\begin{figure}[ht!]
-     \caption*{criminals}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Skurut-hai.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Smazka.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Tlusta_Berta.png}
-        }\\
+\newcommand*{\samples}
+{
+Brad_Brodak,
+Breznakova_nocni_mura,
+Cervi,
+Danielle_diSiuccare,
+Dick_OMyPrick,
+Don_Panzani,
+Freddy_Krueger,
+Gamblerova_nocni_mura,
+Kmotr,
+Kromerizske_trvanlive_salamy,
+Lobo,
+Margherita_Mafian,
+Najemny_vrah,
+Narkobaron,
+Narkozombie,
+Nicic_enchantmentu,
+Nocni_mura_kaderniku,
+Nocni_mura_pradelen,
+Nocni_mura_z_Elk_Street,
+Nocni_mura_z_Shadow_Street,
+Nocni_mura_z_Tepesvar_street,
+Palac_nocnich_mur,
+Pazelvova_manzelka,
+Pazelv,
+Prisera_s_takovejma_tesakama,
+Profesor_Moriarty,
+PVS,
+Santova_nocni_mura,
+Sila_pozitivniho_vagusismu,
+Skunk_pruhovany,
+Skurut-Hai,
+Smazka,
+Tlusta_Berta,
+Tlustoch_Johny,
+Usaty_torpedo,
+Vetrnik_zla,
+Vyberci,
+Zakopy,
+Zlej_polda,
+Zlodejicek}
 
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Tlustoch_Johny.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Usaty_torpedo.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Vetrnik_zla.png}
-        }
-    \end{center}
-\end{figure}
+\newcommand{\type}{criminals}
 
-\begin{figure}[ht!]
-     \caption*{criminals}
-     \begin{center}
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Vyberci.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Zakopy.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Zlej_polda.png}
-        }\\
+\newcounter{cards_line}
+\newcounter{cards_page}
+\newcounter{copy}
 
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Zlodejicek.png}
-        }
-        \iffalse
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Vyberci.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Zlej_polda.png}
-        }
-        \subfigure{
-            \includegraphics[scale=0.75]{cards/criminals/Zlodejicek.png}
-        }
-        \fi
-    \end{center}
-\end{figure}
+\setcounter{cards_line}{3}
+\setcounter{cards_page}{6}
+\setcounter{copy}{0}
+
+\centering
+
+\tiny{\type}
+
+\loop
+\foreach \x in \samples
+{
+	\includegraphics[scale=0.75]{cards/\type/\x.png}
+	%
+	\addtocounter{cards_line}{-1}
+	\addtocounter{cards_page}{-1}
+	\ifnum\value{cards_line} < 1
+	
+	\setcounter{cards_line}{3}
+	\fi
+	%
+	\ifnum\value{cards_page} < 1
+	\clearpage
+	\tiny{\type}
+	
+	\setcounter{cards_page}{6}
+	\fi
+}
+\addtocounter{copy}{1}
+\ifnum\value{copy} < 3
+\repeat
+
+\end{landscape}
+\end{document}
