@@ -29,7 +29,9 @@
   * Detektiv: Jakákoli postava vlastněná hráčem, v jakékoli popelnici
     nebo v obchodě
   * Kriminálník: Jakákoli postava vlastněná vedoucími
-* Sorcery: Karta, kter8 se po svém účinku se odebírá do popelnice.
+  * Legendary creature: Totéž jako postava, ale každý hráč ji smí mít
+    ve své ruce/na stole/v popelnici nanejvýš jednou
+* Sorcery: Karta, která se po svém účinku se odebírá do popelnice.
 * Protekce: Akce barev, proti níž má postava protekci, ji nemohou zacílit
 * Unavená karta bude pootočena; unavená karta již nemůže být do svého
   odpočetí unavena
