@@ -66,12 +66,9 @@
 
 ### Nakupovací fáze
 
-* Budou udány čtyři časy, od nichž můžete nakupovat.
-* Týmy s největším utrženým obnosem za hry od posledního vyhodnocení dostávají
-  dřívější časy (v případě plichty rozhoduje nemilosrdný hod kostkou
-  od nemilosrdných vedoucích).
 * Vedoucí mají otevřený stánek s albem karet a ceníky. K náhledu je
   album vždy.
+* Probíhá obálkovou metodou.
 
 ### Vykládácí fáze detektivních kanceláří
 
