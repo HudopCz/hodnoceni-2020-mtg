@@ -21,7 +21,8 @@
   (a musí zemřít).
 * Enchantment: Karta zůstává po svém vyložení na stole.
 * Land: Karta zůstává po svém vyložení na stole. Za unavení karty dá
-  jeden banán do skladu banánů. Kartě se přezdívá banánovník.
+  jeden banán do skladu banánů. Za jedno kolo může každý hráč vyložit
+  nanejvýš 1 land. Kartě se přezdívá banánovník.
 * Creature: Karta zůstává po vyložení na stole. Creature mohou za unavení
   útočit na určené kriminálníky. Každá creature je definována i svým
   druhem.
